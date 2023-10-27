@@ -3,7 +3,7 @@
 include_once("config.php");
 
 // Fetch all menu data from the database
-$result = "SELECT * FROM menu JOIN penjual ON menu.id_penjual = penjual.idp";
+$result = "SELECT * FROM penjual";
 $user_data = mysqli_query($mysqli, $result);
 ?>
 
@@ -21,20 +21,18 @@ $user_data = mysqli_query($mysqli, $result);
     <table width='80%' border=1>
 
         <tr>
-            <th>Nama Produk</th>
-            <th>Harga</th>
-            <th>Jenis</th>
-            <th>Penjual</th>
+            <th>Nama Member</th>
+            <th>NO HP</th>
+            <th>Alamat</th>
             <th>Update</th>
         </tr>
         <?php
         while ($menu_data = mysqli_fetch_array($user_data)) {
             echo "<tr>";
-            echo "<td>" . $menu_data['nama'] . "</td>";
-            echo "<td>" . $menu_data['harga'] . "</td>";
-            echo "<td>" . $menu_data['jenis'] . "</td>";
             echo "<td>" . $menu_data['namap'] . "</td>";
-            echo "<td><a href='edit.php?id=" . $menu_data['id'] . "'>Edit</a> | <a href='delete.php?id=" . $menu_data['id'] . "'>Delete</a></td></tr>";
+            echo "<td>" . $menu_data['no_hp'] . "</td>";
+            echo "<td>" . $menu_data['alamat'] . "</td>";
+            echo "<td><a href='editp.php?idp=" . $menu_data['idp'] . "'>Edit</a> | <a href='deletep.php?idp=" . $menu_data['idp'] . "'>Delete</a></td></tr>";
         }
         ?>
     </table>
